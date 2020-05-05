@@ -1,13 +1,16 @@
 package com.teachedapp.dao;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name="administrator")
+@Table(name = "administrator")
+@Data
 public class Administrator {
 
     @Id
-    private int id;
+    private Integer id;
 
     @OneToOne
     @MapsId

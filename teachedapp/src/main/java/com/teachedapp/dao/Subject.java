@@ -1,10 +1,13 @@
 package com.teachedapp.dao;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="subject")
+@Table(name = "subject")
+@Data
 public class Subject {
 
     @Id
@@ -17,5 +20,4 @@ public class Subject {
 
     @OneToMany(mappedBy = "subject")
     List<Course> courses;
-
 }
