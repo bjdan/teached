@@ -22,8 +22,8 @@ VALUES (-1, 'English'),
 (-7, 'Information Technology'),
 (-8, 'History');
 
-INSERT INTO course (course_id, subject_id, status, gross_price, teacher_id, student_id)
-VALUES (-1, -6, 0, 60, -2, -3);
+INSERT INTO course (course_id, subject_id, status, hours_per_week, lessons_schedule, student_price_per_hour, teacher_pay_rate_per_hour, teacher_id, student_id)
+VALUES (-1, -6, 0, 3, 'pon 10-13', 29.90, 15, -2, -3);
 
 INSERT INTO lesson (lesson_id, course_id, status, duration, start_date, end_date, notes, payment_id)
 VALUES (-1, -1, 0, null, null, null, null, null),
