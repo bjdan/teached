@@ -27,8 +27,8 @@ public class Lesson {
     @Column
     private String notes;
 
-    @Column
-    private Double duration; // in hours
+    @Column(nullable = true)
+    private short duration; // in hours
 
     @Column(name = "start_date")
     private Date startDate;
@@ -38,6 +38,12 @@ public class Lesson {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payment_id", referencedColumnName = "payment_id")
-    Payment payment;
+    private Payment payment;
+
+    @Column(name = "student_paid")
+    private Boolean studentPaid;
+
+    @Column(name = "teacher_was_paid")
+    private Boolean teacherWasPaid;
 
 }

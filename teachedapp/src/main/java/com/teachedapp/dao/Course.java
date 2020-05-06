@@ -3,6 +3,7 @@ package com.teachedapp.dao;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -20,11 +21,6 @@ public class Course {
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    private Integer gross_price; // per hour
-
-    @OneToMany(mappedBy = "course")
-    List<Lesson> lessons;
-
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     Teacher teacher;
@@ -32,6 +28,21 @@ public class Course {
     @ManyToOne
     @JoinColumn(name = "student_id")
     Student student;
+
+    @Column(name = "hours_per_week")
+    private Double hoursPerWeek;
+
+    @Column(name = "lessons_schedule", columnDefinition = "text")
+    private String lessonsSchedule;
+
+    @Column(name = "student_price_per_hour")
+    private BigDecimal studentPricePerHour;
+
+    @Column(name = "teacher_pay_rate_per_hour")
+    private BigDecimal teacherPayRatePerHour;
+
+    @OneToMany(mappedBy = "course")
+    List<Lesson> lessons;
 
     @Enumerated(EnumType.ORDINAL)
     private CourseStatus status;
