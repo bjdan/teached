@@ -1,19 +1,22 @@
 package com.teachedapp.dao;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
+@Data
 public class PersonalData {
 
-    @Column(length = 40)
-    private String first_name;
+    @Column(name = "first_name", length = 40)
+    private String firstName;
 
-    @Column(length = 40)
-    private String last_name;
+    @Column(name = "last_name", length = 40)
+    private String lastName;
 
-    private short age;
+    private Integer age;
 
-    private char sex;
+    private Character sex;
 
 }

@@ -1,33 +1,40 @@
 package com.teachedapp.dao;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="lesson")
+@Table(name = "lesson")
 @SequenceGenerator(name = "lesson_generator", sequenceName = "lesson_sequence", allocationSize = 1)
+@Data
 public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lesson_generator")
-    @Column(name="lesson_id", nullable=false)
-    private int id;
+    @Column(name = "lesson_id", nullable = false)
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
 
     @Enumerated(EnumType.ORDINAL)
+    @Column
     private LessonStatus status;
 
+    @Column
     private String notes;
 
-    @Column(nullable=true)
-    private short duration; // in hours
+    @Column
+    private Double duration; // in hours
 
-    private Date start_date;
+    @Column(name = "start_date")
+    private Date startDate;
 
-    private Date end_date;
+    @Column(name = "end_date")
+    private Date endDate;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payment_id", referencedColumnName = "payment_id")
