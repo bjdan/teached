@@ -1,18 +1,21 @@
 package com.teachedapp.dao;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name="course")
+@Table(name = "course")
 @SequenceGenerator(name = "course_generator", sequenceName = "course_sequence", allocationSize = 1)
+@Data
 public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_generator")
     @Column(name = "course_id", nullable = false)
-    private int id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "subject_id")
