@@ -3,6 +3,7 @@ package com.teachedapp.dao;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="payment")
@@ -18,7 +19,7 @@ public class Payment {
     @Enumerated(EnumType.ORDINAL)
     private PaymentStatus status;
 
-    private Float amount;
+    private BigDecimal amount;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")

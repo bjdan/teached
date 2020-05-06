@@ -31,10 +31,8 @@ public class Account {
     @Enumerated(EnumType.ORDINAL)
     private AccountStatus status;
 
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
-    private Teacher teacher;
+    private PersonalData personalData;
 
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
-    private Student student;
+    private Address address;
 
 }

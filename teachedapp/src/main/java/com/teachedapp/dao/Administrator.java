@@ -17,6 +17,6 @@ public class Administrator {
     @JoinColumn(name = "administrator_account_id", referencedColumnName = "account_id")
     private Account account;
 
-    private PersonalData personalData;
+    private String department;
 
 }

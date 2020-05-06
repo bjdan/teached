@@ -1,16 +1,16 @@
-INSERT INTO account (account_id, email, login, password, status)
-VALUES (-1, 'User1@mail.com', 'User1', 'password1', 0),
-       (-2, 'User2@mail.com', 'User2', 'password2', 0),
-       (-3, 'User3@mail.com', 'User3', 'password3', 0);
+INSERT INTO account (account_id, email, login, password, status, first_name, last_name, age, sex, country, state, city)
+VALUES (-1, 'User1@mail.com', 'User1', 'password1', 0, 'Super', 'User', 24, 'M', 'Poland', 'lubelskie', 'Lublin'),
+       (-2, 'User2@mail.com', 'User2', 'password2', 0, 'Teacher', 'Professor', 50, 'F', 'Poland', 'lubelskie', 'Lublin'),
+       (-3, 'User3@mail.com', 'User3', 'password3', 0, 'Student', 'Newbie', 17, 'M', 'Poland', 'lubelskie', 'Lublin');
 
-INSERT INTO  administrator (administrator_account_id, first_name, last_name, age, sex)
-VALUES (-1, 'Super', 'User', 24, 'M');
+INSERT INTO  administrator (administrator_account_id, department)
+VALUES (-1, 'Accounting');
 
-INSERT INTO  teacher (teacher_account_id, first_name, last_name, age, sex, country, state, city, description)
-VALUES (-2, 'Teacher', 'Professor', 50, 'F', 'Poland', 'lubelskie', 'Lublin', 'I have 20 years of experience.');
+INSERT INTO  teacher (teacher_account_id, description)
+VALUES (-2, 'I have 20 years of experience.');
 
-INSERT INTO  student (student_account_id, first_name, last_name, age, sex, country, state, city)
-VALUES (-3, 'Student', 'Newbie', 17, 'M', 'Poland', 'lubelskie', 'Lublin');
+INSERT INTO  student (student_account_id, budget)
+VALUES (-3, 100.50);
 
 INSERT INTO  subject (subject_id, name)
 VALUES (-1, 'English'),

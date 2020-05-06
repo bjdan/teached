@@ -27,7 +27,7 @@ public class Lesson {
     @Column
     private String notes;
 
-    @Column(nullable = true)
+    @Column
     private short duration; // in hours
 
     @Column(name = "start_date")

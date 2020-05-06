@@ -3,6 +3,7 @@ package com.teachedapp.dao;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "student")
@@ -17,9 +18,7 @@ public class Student {
     @JoinColumn(name = "student_account_id", referencedColumnName = "account_id")
     private Account account;
 
-    private PersonalData personalData;
-
-    private Address address;
+    private BigDecimal budget;
 
 }
 
