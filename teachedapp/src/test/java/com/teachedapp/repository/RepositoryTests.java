@@ -1,7 +1,7 @@
 package com.teachedapp.repository;
 
-import com.teachedapp.dao.Course;
-import com.teachedapp.respository.CourseRepository;
+import com.teachedapp.dao.Subject;
+import com.teachedapp.respository.SubjectRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -16,20 +16,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RepositoryTests {
 
     @Autowired
-    CourseRepository courseRepository;
+    SubjectRepository subjectRepository;
 
     @Test
-    public void testCreateReadDelete() {
-        Course course = new Course();
-        course.setId(0);
+    public void testCourseRepositoryCRUD() {
+        Subject subject = new Subject();
+        subject.setId(0);
+        subject.setName("Maths");
 
-        courseRepository.save(course);
+        subjectRepository.save(subject);
 
-        Optional<Course> foundCourse = courseRepository.findById(0);
-        assertThat(foundCourse.isPresent());
-        foundCourse.ifPresent(value -> assertThat(value).isEqualTo(course));
+        Optional<Subject> foundSubject = subjectRepository.findById(0);
+        assertThat(foundSubject.isPresent());
+        foundSubject.ifPresent(value -> assertThat(value).isEqualTo(subject));
 
-        courseRepository.delete(course);
-        assertThat(courseRepository.findById(0).isPresent()).isFalse();
+        subjectRepository.delete(subject);
+        assertThat(subjectRepository.findById(0).isPresent()).isFalse();
     }
 }
