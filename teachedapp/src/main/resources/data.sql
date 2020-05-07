@@ -25,6 +25,9 @@ VALUES (-1, 'English'),
 INSERT INTO course (course_id, subject_id, status, hours_per_week, lessons_schedule, student_price_per_hour, teacher_pay_rate_per_hour, teacher_id, student_id)
 VALUES (-1, -6, 0, 3, 'pon 10-13', 29.90, 15, -2, -3);
 
+INSERT INTO payment (payment_id, status)
+VALUES (-1, 0), (-2, 1);
+
 INSERT INTO lesson (lesson_id, course_id, status, duration, start_date, end_date, notes, payment_id)
 VALUES (-1, -1, 0, null, null, null, null, null),
 (-2, -1, 0, null, null, null, null, null),
