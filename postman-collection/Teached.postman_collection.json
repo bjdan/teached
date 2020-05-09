@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d5fb0ec3-853e-4fce-be9b-077f845b1164",
+		"_postman_id": "393eb12d-0e72-4a0d-9846-f1bd6468d15f",
 		"name": "Teached",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -44,6 +44,34 @@
 								"api",
 								"subjects",
 								"-6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get subjects filtered by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/subjects/search/findByNameContainingIgnoreCase?name=technology",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"subjects",
+								"search",
+								"findByNameContainingIgnoreCase"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "technology"
+								}
 							]
 						}
 					},
