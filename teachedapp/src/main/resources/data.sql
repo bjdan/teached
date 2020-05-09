@@ -1,7 +1,8 @@
 INSERT INTO account (account_id, email, login, password, status, first_name, last_name, age, sex, country, state, city)
 VALUES (-1, 'User1@mail.com', 'User1', 'password1', 0, 'Super', 'User', 24, 'M', 'Poland', 'lubelskie', 'Lublin'),
        (-2, 'User2@mail.com', 'User2', 'password2', 0, 'Teacher', 'Professor', 50, 'F', 'Poland', 'lubelskie', 'Lublin'),
-       (-3, 'User3@mail.com', 'User3', 'password3', 0, 'Student', 'Newbie', 17, 'M', 'Poland', 'lubelskie', 'Lublin');
+       (-3, 'User3@mail.com', 'User3', 'password3', 0, 'Student', 'Newbie', 17, 'M', 'Poland', 'lubelskie', 'Lublin'),
+       (-4, 'User4@mail.com', 'User4', 'password4', 0, 'English', 'Man', 40, 'M', 'Poland', 'lubelskie', 'Lublin');
 
 INSERT INTO  administrator (administrator_account_id, department)
 VALUES (-1, 'Accounting');
