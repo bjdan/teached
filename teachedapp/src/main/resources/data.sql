@@ -31,8 +31,8 @@ VALUES (-1, -2, -3, 0, null),
 (-2, -2, -3, 1, 15.0);
 
 INSERT INTO lesson (lesson_id, course_id, status, duration, start_date, end_date, notes, payment_id)
-VALUES (-1, -1, 0, null, null, null, null, null),
-(-2, -1, 0, null, null, null, null, null),
-(-3, -1, 0, null, null, null, null, null),
+VALUES (-1, -1, 0, 1, null, null, null, null),
+(-2, -1, 0, 2, null, null, null, null),
+(-3, -1, 0, 3.5, null, null, null, null),
 (-4, -1, 0, null, null, null, null, null),
-(-5, -1, 0, null, null, null, null, null);
+(-5, -1, 0, 1, null, null, null, null);

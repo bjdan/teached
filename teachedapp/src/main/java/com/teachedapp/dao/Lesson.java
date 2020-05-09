@@ -28,7 +28,7 @@ public class Lesson {
     private String notes;
 
     @Column
-    private short duration; // in hours
+    private Double duration; // in hours
 
     @Column(name = "start_date")
     private Date startDate;
