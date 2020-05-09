@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -19,6 +20,9 @@ public class Student {
     private Account account;
 
     private BigDecimal budget;
+
+    @OneToMany(mappedBy = "student")
+    List<Course> courses;
 
 }
 

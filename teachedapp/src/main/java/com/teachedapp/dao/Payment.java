@@ -21,15 +21,12 @@ public class Payment {
 
     private BigDecimal amount;
 
-    @ManyToOne
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id")
     Account sender;
 
-    @ManyToOne
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "recipient_id")
     Account recipient;
-
-    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL)
-    Lesson lesson;
 
 }

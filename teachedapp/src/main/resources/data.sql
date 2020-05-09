@@ -23,10 +23,12 @@ VALUES (-1, 'English'),
 (-8, 'History');
 
 INSERT INTO course (course_id, subject_id, status, hours_per_week, lessons_schedule, student_price_per_hour, teacher_pay_rate_per_hour, teacher_id, student_id)
-VALUES (-1, -6, 0, 3, 'pon 10-13', 29.90, 15, -2, -3);
+VALUES (-1, -6, 0, 3, 'pon 10-13', 29.90, 15, -2, -3),
+(-2, -5, 0, 3, 'wt 10-13', 29.90, 15, -2, -3);
 
-INSERT INTO payment (payment_id, status)
-VALUES (-1, 0), (-2, 1);
+INSERT INTO payment (payment_id, recipient_id, sender_id, status, amount)
+VALUES (-1, -2, -3, 0, null),
+(-2, -2, -3, 1, 15.0);
 
 INSERT INTO lesson (lesson_id, course_id, status, duration, start_date, end_date, notes, payment_id)
 VALUES (-1, -1, 0, null, null, null, null, null),

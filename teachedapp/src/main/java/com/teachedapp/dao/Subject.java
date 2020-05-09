@@ -20,4 +20,5 @@ public class Subject {
 
     @OneToMany(mappedBy = "subject")
     List<Course> courses;
+
 }

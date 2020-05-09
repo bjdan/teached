@@ -17,15 +17,15 @@ public class Course {
     @Column(name = "course_id", nullable = false)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    @ManyToOne
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
     Teacher teacher;
 
-    @ManyToOne
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     Student student;
 
