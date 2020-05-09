@@ -1,7 +1,6 @@
 package com.teachedapp.controller;
 
-import com.teachedapp.service.SubjectService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.teachedapp.respository.SubjectRepository;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,20 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/subjects", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class SubjectController {
 
-    private final SubjectService subjectService;
+    private final SubjectRepository subjectRepository;
 
-    @Autowired
-    public SubjectController(SubjectService subjectService) {
-        this.subjectService = subjectService;
+    public SubjectController(SubjectRepository subjectRepository) {
+        this.subjectRepository = subjectRepository;
     }
 
     @GetMapping
     public String getSubjects(Model model, String name) {
         if (name != null) {
-            model.addAttribute("subjects", subjectService.getAllSubjectsByNameContaining(name));
+            model.addAttribute("subjects", subjectRepository.findAllByNameContaining(name));
 
         } else {
-            model.addAttribute("subjects", subjectService.getAllSubjects());
+            model.addAttribute("subjects", subjectRepository.findAll());
 
         }
         return "subjects";
