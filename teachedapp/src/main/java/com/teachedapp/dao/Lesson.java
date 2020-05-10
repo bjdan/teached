@@ -16,7 +16,7 @@ public class Lesson {
     @Column(name = "lesson_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "course_id")
     private Course course;
 
