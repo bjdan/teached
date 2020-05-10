@@ -1,5 +1,6 @@
 package com.teachedapp.dao;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Account {
     @Column(length = 40, nullable = false)
     private String login;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(length = 40, nullable = false)
     private String password;
 

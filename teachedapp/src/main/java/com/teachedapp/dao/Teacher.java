@@ -13,8 +13,8 @@ public class Teacher {
     @Id
     private Integer id;
 
-    @OneToOne
     @MapsId
+    @OneToOne(optional=false, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "teacher_account_id", referencedColumnName = "account_id")
     private Account account;
 
@@ -22,5 +22,12 @@ public class Teacher {
 
     @OneToMany(mappedBy = "teacher")
     List<Course> courses;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "teacher_subject_assignment",
+            joinColumns = {@JoinColumn(name = "teacher_account_id")},
+            inverseJoinColumns = {@JoinColumn(name = "subject_id")})
+    private List<Subject> subjects;
 
 }
