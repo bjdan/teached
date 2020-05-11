@@ -16,23 +16,23 @@ VALUES (-1, 'User1@mail.com', 'User1', 'password1', 0, 'Super', 'User', 24, 'M',
 (-5, 'User5@mail.com', 'User5', 'password5', 0, 'Biology', 'Woman', 33, 'M', 'Poland', 'mazowieckie', 'Warszawa'),
 (-6, 'User6@mail.com', 'User6', 'password6', 0, 'Math', 'Boy', 25, 'M', 'Poland', 'małopolskie', 'Kraków');
 
-INSERT INTO  administrator (administrator_account_id, department)
+INSERT INTO  administrator (administrator_id, department)
 VALUES (-1, 'Accounting');
 
-INSERT INTO  teacher (teacher_account_id, description)
+INSERT INTO  teacher (teacher_id, description)
 VALUES (-1, 'Can I help you?'),
 (-2, 'I have 25 years of experience.'),
 (-4, 'I have 20 years of experience.'),
 (-5, 'I love biology.'),
 (-6, 'I love math.');
 
-INSERT INTO teacher_subject_assignment(teacher_account_id, subject_id)
+INSERT INTO teacher_subject_assignment(teacher_id, subject_id)
 VALUES (-2, -7),
 (-2, -6),
 (-2, -5),
 (-4, -1);
 
-INSERT INTO  student (student_account_id, budget)
+INSERT INTO  student (student_id, budget)
 VALUES (-3, 100.50);
 
 INSERT INTO course (course_id, subject_id, status, hours_per_week, lessons_schedule, student_price_per_hour, teacher_pay_rate_per_hour, teacher_id, student_id)
