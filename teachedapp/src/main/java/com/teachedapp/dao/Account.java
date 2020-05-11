@@ -1,6 +1,8 @@
 package com.teachedapp.dao;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,6 +24,7 @@ public class Account {
     @Column(length = 40, nullable = false)
     private String login;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(length = 40, nullable = false)
     private String password;
 

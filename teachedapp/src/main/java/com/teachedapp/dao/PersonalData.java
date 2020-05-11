@@ -19,4 +19,13 @@ public class PersonalData {
 
     private Character sex;
 
+    public PersonalData() {}
+
+    public PersonalData(String firstName, String lastName, Integer age, Character sex) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.sex = sex;
+    }
+
 }

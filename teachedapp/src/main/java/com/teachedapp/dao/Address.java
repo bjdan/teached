@@ -18,4 +18,12 @@ public class Address {
     @Column(length = 40)
     private String city;
 
+    public Address() {}
+
+    public Address(String country, String state, String city) {
+        this.country = country;
+        this.state = state;
+        this.city = city;
+    }
+
 }

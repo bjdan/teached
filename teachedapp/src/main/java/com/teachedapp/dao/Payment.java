@@ -21,11 +21,11 @@ public class Payment {
 
     private BigDecimal amount;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "sender_id")
     Account sender;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "recipient_id")
     Account recipient;
 
