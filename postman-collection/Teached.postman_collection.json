@@ -938,6 +938,21 @@
 				{
 					"name": "GET course by id",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password2",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "User2",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -948,6 +963,64 @@
 							"path": [
 								"api",
 								"courses",
+								"-1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Lesson",
+			"item": [
+				{
+					"name": "get all lessons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/lessons",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"lessons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET lesson by id",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password2",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "User2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/lessons/-1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"lessons",
 								"-1"
 							]
 						}
