@@ -30,11 +30,8 @@ public class Lesson {
     @Column
     private Double duration; // in hours
 
-    @Column(name = "start_date")
-    private Date startDate;
-
-    @Column(name = "end_date")
-    private Date endDate;
+    @Column
+    private Date date;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payment_id", referencedColumnName = "payment_id")
