@@ -831,7 +831,7 @@
 					"response": []
 				},
 				{
-					"name": "GET all teachers (USE CASE)",
+					"name": "GET teachers filtered by multiple parameters",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -896,7 +896,8 @@
 									"value": "1000"
 								}
 							]
-						}
+						},
+						"description": "List of parameters created according to USE CASE"
 					},
 					"response": []
 				}
@@ -1049,6 +1050,99 @@
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET students filtered by age and city",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/students/search/queryByAgeBetweenAndCity?from=0&to=41&city=Lublin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"search",
+								"queryByAgeBetweenAndCity"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "0"
+								},
+								{
+									"key": "to",
+									"value": "41"
+								},
+								{
+									"key": "city",
+									"value": "Lublin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET students filtered by multiple parameters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/students/search/queryByStatisticParameters?minAge=0&maxAge=60&city=%&minPaid=45&maxPaid=1000&minHours=0&maxHours=160&minUnpaid=0&maxUnpaid=1000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"search",
+								"queryByStatisticParameters"
+							],
+							"query": [
+								{
+									"key": "minAge",
+									"value": "0"
+								},
+								{
+									"key": "maxAge",
+									"value": "60"
+								},
+								{
+									"key": "city",
+									"value": "%"
+								},
+								{
+									"key": "minPaid",
+									"value": "45"
+								},
+								{
+									"key": "maxPaid",
+									"value": "1000"
+								},
+								{
+									"key": "minHours",
+									"value": "0"
+								},
+								{
+									"key": "maxHours",
+									"value": "160"
+								},
+								{
+									"key": "minUnpaid",
+									"value": "0"
+								},
+								{
+									"key": "maxUnpaid",
+									"value": "1000"
+								}
+							]
+						},
+						"description": "List of parameters created according to USE CASE"
 					},
 					"response": []
 				}
