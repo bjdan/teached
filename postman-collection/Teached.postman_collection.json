@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8af9035a-a897-424e-9e67-66a372018424",
+		"_postman_id": "13f0d92c-43c9-4c7f-b5d0-ea3379081d81",
 		"name": "Teached",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -757,6 +757,149 @@
 						"description": "Method declared in TeacherController"
 					},
 					"response": []
+				},
+				{
+					"name": "GET teachers filtered by age and city",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/teachers/search/queryByAgeBetweenAndCity?from=0&to=41&city=Lublin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"search",
+								"queryByAgeBetweenAndCity"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "0"
+								},
+								{
+									"key": "to",
+									"value": "41"
+								},
+								{
+									"key": "city",
+									"value": "Lublin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET teachers filtered by age, city and subject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/teachers/search/queryByAgeBetweenAndCityAndSubject?from=0&to=41&city=Lublin&subject=%",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"search",
+								"queryByAgeBetweenAndCityAndSubject"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "0"
+								},
+								{
+									"key": "to",
+									"value": "41"
+								},
+								{
+									"key": "city",
+									"value": "Lublin"
+								},
+								{
+									"key": "subject",
+									"value": "%"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET teachers filtered by multiple parameters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/teachers/search/queryByStatisticParameters?minAge=0&maxAge=60&city=%&subject=%&minAC=0&maxAC=10&minPaid=45&maxPaid=1000&minHours=0&maxHours=160&minUnpaid=0&maxUnpaid=1000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"search",
+								"queryByStatisticParameters"
+							],
+							"query": [
+								{
+									"key": "minAge",
+									"value": "0"
+								},
+								{
+									"key": "maxAge",
+									"value": "60"
+								},
+								{
+									"key": "city",
+									"value": "%"
+								},
+								{
+									"key": "subject",
+									"value": "%"
+								},
+								{
+									"key": "minAC",
+									"value": "0"
+								},
+								{
+									"key": "maxAC",
+									"value": "10"
+								},
+								{
+									"key": "minPaid",
+									"value": "45"
+								},
+								{
+									"key": "maxPaid",
+									"value": "1000"
+								},
+								{
+									"key": "minHours",
+									"value": "0"
+								},
+								{
+									"key": "maxHours",
+									"value": "160"
+								},
+								{
+									"key": "minUnpaid",
+									"value": "0"
+								},
+								{
+									"key": "maxUnpaid",
+									"value": "1000"
+								}
+							]
+						},
+						"description": "List of parameters created according to USE CASE"
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -909,6 +1052,99 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GET students filtered by age and city",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/students/search/queryByAgeBetweenAndCity?from=0&to=41&city=Lublin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"search",
+								"queryByAgeBetweenAndCity"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "0"
+								},
+								{
+									"key": "to",
+									"value": "41"
+								},
+								{
+									"key": "city",
+									"value": "Lublin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET students filtered by multiple parameters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/students/search/queryByStatisticParameters?minAge=0&maxAge=60&city=%&minPaid=45&maxPaid=1000&minHours=0&maxHours=160&minUnpaid=0&maxUnpaid=1000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"search",
+								"queryByStatisticParameters"
+							],
+							"query": [
+								{
+									"key": "minAge",
+									"value": "0"
+								},
+								{
+									"key": "maxAge",
+									"value": "60"
+								},
+								{
+									"key": "city",
+									"value": "%"
+								},
+								{
+									"key": "minPaid",
+									"value": "45"
+								},
+								{
+									"key": "maxPaid",
+									"value": "1000"
+								},
+								{
+									"key": "minHours",
+									"value": "0"
+								},
+								{
+									"key": "maxHours",
+									"value": "160"
+								},
+								{
+									"key": "minUnpaid",
+									"value": "0"
+								},
+								{
+									"key": "maxUnpaid",
+									"value": "1000"
+								}
+							]
+						},
+						"description": "List of parameters created according to USE CASE"
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1036,12 +1272,12 @@
 		"basic": [
 			{
 				"key": "password",
-				"value": "password1",
+				"value": "password2",
 				"type": "string"
 			},
 			{
 				"key": "username",
-				"value": "User1",
+				"value": "User2",
 				"type": "string"
 			}
 		]
@@ -1050,7 +1286,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "7ea616c5-5b7d-4e14-b572-7bab4c602382",
+				"id": "a2fbf8db-b925-4afc-924a-885bc99c5ee8",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1060,7 +1296,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "7409d828-81f7-49f2-968d-8b84c24e4cb4",
+				"id": "403f477b-19e4-4a12-9ea3-7dba3e902dda",
 				"type": "text/javascript",
 				"exec": [
 					""

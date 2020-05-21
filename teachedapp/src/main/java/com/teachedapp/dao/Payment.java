@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name="payment")
@@ -29,4 +30,6 @@ public class Payment {
     @JoinColumn(name = "recipient_id")
     Account recipient;
 
+    @Column(name = "pay_date", columnDefinition = "DATE DEFAULT CURRENT_DATE")
+    private final Date payDate = new Date();
 }
