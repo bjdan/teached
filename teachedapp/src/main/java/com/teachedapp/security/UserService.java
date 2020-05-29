@@ -3,14 +3,13 @@ package com.teachedapp.security;
 import com.teachedapp.dao.Account;
 import com.teachedapp.respository.AccountRepository;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -27,10 +26,12 @@ public class UserService implements UserDetailsService {
         if (account == null) {
             throw new UsernameNotFoundException("Login: " + login + " not found");
         }
-        return new User(login, "{noop}" + account.getPassword(), getGrantedAuthorities(account));
+        return new User(login, "{noop}" + account.getPassword(), account.getId(), getGrantedAuthorities(account));
     }
 
     private Collection<? extends GrantedAuthority> getGrantedAuthorities(Account account) {
-        return Collections.singletonList(() -> accountRepository.findRoleByAccountId(account.getId()));
+        return accountRepository.findRolesByAccountId(account.getId()).stream()
+                .map(role -> (GrantedAuthority) () -> role)
+                .collect(Collectors.toList());
     }
 }
