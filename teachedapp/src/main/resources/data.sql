@@ -40,12 +40,22 @@ VALUES (-1, -6, 0, 3, 'pon 10-13', 29.90, 15, -2, -3),
 (-2, -5, 0, 3, 'wt 10-13', 29.90, 15, -2, -3);
 
 INSERT INTO payment (payment_id, recipient_id, sender_id, status, amount)
-VALUES (-1, -2, -3, 0, null),
-(-2, -2, -3, 1, 15.0);
+VALUES (-1, -2, -3, 1, 15.0),
+(-2, -2, -3, 1, 15.0),
+(-3, -2, -3, 1, 15.0),
+(-4, -2, -3, 1, 15.0),
+(-5, -2, -3, 1, 15.0),
+(-6, -2, -3, 1, 15.0),
+(-7, -2, -3, 1, 15.0),
+(-8, -2, -3, 0, 15.0);
 
 INSERT INTO lesson (lesson_id, course_id, status, duration, date, notes, payment_id)
-VALUES (-1, -1, 3, 1, '2020-05-03', 'First lesson in course.', -2),
-(-2, -1, 0, 2, null, null, null),
-(-3, -1, 0, 3.5, null, null, null),
-(-4, -1, 0, null, null, null, null),
-(-5, -1, 0, 1, null, null, null);
+VALUES
+(-1, -1, 3, 1, '2020-04-13', 'First lesson in course.', -1),
+(-2, -1, 3, 1, '2020-04-20', 'Second lesson in course.', -2),
+(-3, -1, 3, 1, '2020-04-27', 'Third lesson in course.', -3),
+(-4, -1, 3, 1, '2020-05-04', 'Fourth lesson in course.', -4),
+(-5, -1, 3, 2, '2020-05-11', 'Fifth lesson in course.', -5),
+(-6, -1, 3, 1.5, '2020-05-18', 'Sixth lesson in course.', -6),
+(-7, -1, 3, 2.5, '2020-05-25', 'Seventh lesson in course.', -7),
+(-8, -1, 0, 1, '2020-06-02', null, null);
