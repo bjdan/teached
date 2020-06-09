@@ -9,8 +9,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 
 @RestController
@@ -45,7 +43,7 @@ public class TeacherController {
 
 
     @GetMapping(value = "/{id}/salary", produces = "application/json")
-    public @ResponseBody Double getSalary(@PathVariable("id") Integer id,
+    public Double getSalary(@PathVariable("id") Integer id,
                              @RequestParam(value="calculateDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date calculateDate) {
         Optional<Teacher> teacher = teacherRepository.findById(id);
         double salary = 0.0;
