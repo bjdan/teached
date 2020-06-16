@@ -7,11 +7,15 @@ import com.teachedapp.respository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
-@RestController
+@Controller
 @RequestMapping(value = "/teachers", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class TeacherController {
 
@@ -24,8 +28,30 @@ public class TeacherController {
     @Autowired
     private SubjectRepository subjectRepository;
 
+    @GetMapping("/create")
+    public String createTeacherForm(Model model) {
+
+        model.addAttribute("teacher", new Teacher());
+
+        return "teacher/new-teacher-form";
+    }
+
+    @PostMapping("/create")
+    public String addUser(@Valid Teacher teacher, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "teacher/new-teacher-form";
+        }
+
+        Account teacherAccount = teacher.getAccount();
+        accountRepository.save(teacherAccount);
+        teacher.setAccount(teacherAccount);
+        teacherRepository.save(teacher);
+
+        return "redirect:/";
+    }
+
     @PostMapping
-    public Teacher addTeacher(@RequestBody Teacher teacher) {
+    public @ResponseBody Teacher addTeacher(@RequestBody Teacher teacher) {
         Account teacherAccount = teacher.getAccount();
         accountRepository.save(teacherAccount);
         teacher.setAccount(teacherAccount);
@@ -43,8 +69,10 @@ public class TeacherController {
 
 
     @GetMapping(value = "/{id}/salary", produces = "application/json")
-    public Double getSalary(@PathVariable("id") Integer id,
-                             @RequestParam(value="calculateDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date calculateDate) {
+    public @ResponseBody Double getSalary(
+            @PathVariable("id") Integer id,
+            @RequestParam(value="calculateDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date calculateDate) {
+
         Optional<Teacher> teacher = teacherRepository.findById(id);
         double salary = 0.0;
 
