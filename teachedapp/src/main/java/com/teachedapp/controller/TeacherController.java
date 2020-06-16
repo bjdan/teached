@@ -12,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import java.util.*;
 
@@ -28,6 +31,12 @@ public class TeacherController {
     @Autowired
     private SubjectRepository subjectRepository;
 
+    @PersistenceContext
+    EntityManager em;
+
+    @Autowired
+    EntityManagerFactory emf;
+
     @GetMapping("/create")
     public String createTeacherForm(Model model) {
 
@@ -37,15 +46,24 @@ public class TeacherController {
     }
 
     @PostMapping("/create")
-    public String addUser(@Valid Teacher teacher, BindingResult result, Model model) {
+    public String createTeacherAccount(@Valid Teacher teacher, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "teacher/new-teacher-form";
         }
-
         Account teacherAccount = teacher.getAccount();
-        accountRepository.save(teacherAccount);
+
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(teacherAccount);
+        entityManager.getTransaction().commit();
+
         teacher.setAccount(teacherAccount);
-        teacherRepository.save(teacher);
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(teacher);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
 
         return "redirect:/";
     }
