@@ -24,7 +24,7 @@
 
             <ul th:if="${not #lists.isEmpty(subjects)}">
                 <li th:each="subject : ${subjects}">
-                    <a th:href="@{/subjects/(id=${subject.id})}"><span th:text="${subject.name}"></span></a>
+                    <a th:href="@{/teachers/(subjectId=${subject.id})}"><span th:text="${subject.name}"></span></a>
                 </li>
 
             </ul>

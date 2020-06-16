@@ -1,6 +1,6 @@
 package com.teachedapp.dao;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.rest.core.annotation.RestResource;
 
@@ -24,6 +24,7 @@ public class Teacher {
     private String description;
 
     @OneToMany(mappedBy = "teacher")
+    @JsonIgnore
     List<Course> courses;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -31,6 +32,7 @@ public class Teacher {
             name = "teacher_subject_assignment",
             joinColumns = {@JoinColumn(name = "teacher_id")},
             inverseJoinColumns = {@JoinColumn(name = "subject_id")})
+    @JsonIgnore
     private List<Subject> subjects;
 
 }

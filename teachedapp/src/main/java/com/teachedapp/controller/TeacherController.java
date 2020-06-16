@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import javax.validation.Valid;
 import java.util.*;
 
@@ -50,6 +52,7 @@ public class TeacherController {
         if (result.hasErrors()) {
             return "teacher/new-teacher-form";
         }
+
         Account teacherAccount = teacher.getAccount();
 
         EntityManager entityManager = emf.createEntityManager();
@@ -66,6 +69,7 @@ public class TeacherController {
         entityManager.close();
 
         return "redirect:/";
+
     }
 
     @PostMapping
@@ -85,6 +89,16 @@ public class TeacherController {
         return teacher;
     }
 
+    @GetMapping(produces = "application/json")
+    public @ResponseBody List<Teacher> getTeacherBySubject(@RequestParam(value="subjectId") Integer subjectId) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Teacher> cq = cb.createQuery(Teacher.class);
+        Root<Teacher> teacherRoot = cq.from(Teacher.class);
+        Join<Teacher, Subject> teacherSubject = teacherRoot.join("subjects", JoinType.LEFT);
+        cq.select(teacherRoot).where(teacherSubject.get("id").in(subjectId)).distinct(true);
+        TypedQuery<Teacher> query = em.createQuery(cq);
+        return query.getResultList();
+    }
 
     @GetMapping(value = "/{id}/salary", produces = "application/json")
     public @ResponseBody Double getSalary(
@@ -133,4 +147,5 @@ public class TeacherController {
         }
         return salary;
     }
+
 }
