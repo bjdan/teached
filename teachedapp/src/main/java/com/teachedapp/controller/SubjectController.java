@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/subjects", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class SubjectController {
 
+    static final String VIEW_SUBJECTS = "subject/subjects";
+
     private final SubjectRepository subjectRepository;
 
     public SubjectController(SubjectRepository subjectRepository) {
@@ -27,7 +29,7 @@ public class SubjectController {
             model.addAttribute("subjects", subjectRepository.findAll());
 
         }
-        return "subjects";
+        return VIEW_SUBJECTS;
     }
 
 }
