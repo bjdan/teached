@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layout}">
+<head>
+    <title>Teachers</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <table class="table table-striped table-bordered" id="cities" th:if="${not #lists.isEmpty(teachers)}">
+        <thead>
+        <tr>
+            <th scope="col">City</th>
+            <th scope="col">Founded in</th>
+            <th scope="col">Population</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teacher : ${teachers}" th:id="${teacher.id}">
+            <td>
+                <span id="name" data-type="text" data-title="Name"
+                      th:text="${teacher.account.personalData.firstName}"></span>
+            </td>
+            <td>
+                <span id="foundedIn" data-type="number" data-title="Age"
+                      th:text="${teacher.account.personalData.age}"></span>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div th:if="${#lists.isEmpty(teachers)}">
+        <p>There is no teachers.</p>
+    </div>
+</div>
+
+</body>
+</html>

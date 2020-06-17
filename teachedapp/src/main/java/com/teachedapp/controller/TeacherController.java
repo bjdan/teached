@@ -24,6 +24,10 @@ import java.util.*;
 @RequestMapping(value = "/teachers", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class TeacherController {
 
+    static final String VIEW_TEACHERS = "teacher/teachers";
+    static final String VIEW_NEW_TEACHER_FORM = "teacher/new-teacher-form";
+
+
     @Autowired
     private AccountRepository accountRepository;
 
@@ -44,7 +48,7 @@ public class TeacherController {
 
         model.addAttribute("teacher", new Teacher());
 
-        return "teacher/new-teacher-form";
+        return VIEW_NEW_TEACHER_FORM;
     }
 
     @PostMapping("/create")
@@ -90,14 +94,15 @@ public class TeacherController {
     }
 
     @GetMapping(produces = "application/json")
-    public @ResponseBody List<Teacher> getTeacherBySubject(@RequestParam(value="subjectId") Integer subjectId) {
+    public String getTeacherBySubject(Model model, @RequestParam(value="subjectId") Integer subjectId) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Teacher> cq = cb.createQuery(Teacher.class);
         Root<Teacher> teacherRoot = cq.from(Teacher.class);
         Join<Teacher, Subject> teacherSubject = teacherRoot.join("subjects", JoinType.LEFT);
         cq.select(teacherRoot).where(teacherSubject.get("id").in(subjectId)).distinct(true);
         TypedQuery<Teacher> query = em.createQuery(cq);
-        return query.getResultList();
+        model.addAttribute("teachers", query.getResultList());
+        return VIEW_TEACHERS;
     }
 
     @GetMapping(value = "/{id}/salary", produces = "application/json")
