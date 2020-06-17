@@ -7,11 +7,20 @@ import com.teachedapp.respository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
+import javax.validation.Valid;
 import java.util.*;
 
-@RestController
+@Controller
 @RequestMapping(value = "/teachers", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class TeacherController {
 
@@ -24,8 +33,47 @@ public class TeacherController {
     @Autowired
     private SubjectRepository subjectRepository;
 
+    @PersistenceContext
+    EntityManager em;
+
+    @Autowired
+    EntityManagerFactory emf;
+
+    @GetMapping("/create")
+    public String createTeacherForm(Model model) {
+
+        model.addAttribute("teacher", new Teacher());
+
+        return "teacher/new-teacher-form";
+    }
+
+    @PostMapping("/create")
+    public String createTeacherAccount(@Valid Teacher teacher, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "teacher/new-teacher-form";
+        }
+
+        Account teacherAccount = teacher.getAccount();
+
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(teacherAccount);
+        entityManager.getTransaction().commit();
+
+        teacher.setAccount(teacherAccount);
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(teacher);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+
+        return "redirect:/";
+
+    }
+
     @PostMapping
-    public Teacher addTeacher(@RequestBody Teacher teacher) {
+    public @ResponseBody Teacher addTeacher(@RequestBody Teacher teacher) {
         Account teacherAccount = teacher.getAccount();
         accountRepository.save(teacherAccount);
         teacher.setAccount(teacherAccount);
@@ -41,10 +89,22 @@ public class TeacherController {
         return teacher;
     }
 
+    @GetMapping(produces = "application/json")
+    public @ResponseBody List<Teacher> getTeacherBySubject(@RequestParam(value="subjectId") Integer subjectId) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Teacher> cq = cb.createQuery(Teacher.class);
+        Root<Teacher> teacherRoot = cq.from(Teacher.class);
+        Join<Teacher, Subject> teacherSubject = teacherRoot.join("subjects", JoinType.LEFT);
+        cq.select(teacherRoot).where(teacherSubject.get("id").in(subjectId)).distinct(true);
+        TypedQuery<Teacher> query = em.createQuery(cq);
+        return query.getResultList();
+    }
 
     @GetMapping(value = "/{id}/salary", produces = "application/json")
-    public Double getSalary(@PathVariable("id") Integer id,
-                             @RequestParam(value="calculateDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date calculateDate) {
+    public @ResponseBody Double getSalary(
+            @PathVariable("id") Integer id,
+            @RequestParam(value="calculateDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date calculateDate) {
+
         Optional<Teacher> teacher = teacherRepository.findById(id);
         double salary = 0.0;
 
@@ -87,4 +147,5 @@ public class TeacherController {
         }
         return salary;
     }
+
 }
