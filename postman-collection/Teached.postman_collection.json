@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ee2c328d-afe7-40cd-bda2-db70d3298fde",
+		"_postman_id": "200d6739-c3ef-41de-97f5-7acb493233d3",
 		"name": "Teached all requests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -471,7 +471,15 @@
 							}
 						},
 						"url": {
-							"raw": ""
+							"raw": "{{base_url}}/api/subjects/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subjects",
+								""
+							]
 						}
 					},
 					"response": []
@@ -527,6 +535,25 @@
 								"api",
 								"subjects",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE subject",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/subjects/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subjects",
+								"3"
 							]
 						}
 					},
@@ -1031,6 +1058,81 @@
 						"description": "List of parameters created according to USE CASE"
 					},
 					"response": []
+				},
+				{
+					"name": "PUT teacher",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"account\":\t{\r\n\t\t\"email\":\"polish.teacher@mail.com\", \r\n\t\t\"login\":\"PolishTeacher\",\r\n\t\t\"password\":\"P@ssw0rd123\", \r\n\t\t\"status\":\"1\", \r\n\t    \"personalData\": {\r\n\t      \"firstName\": \"Magdalena\",\r\n\t      \"lastName\": \"Wielkopolska\",\r\n\t      \"age\": 28,\r\n\t      \"sex\": \"F\"\r\n\t    },\r\n\t    \"address\": {\r\n\t      \"country\": \"Poland\"\r\n\t    }\r\n\t},\r\n\t\"description\":\"I love my country, so I love Polish language.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/teachers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH teacher",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"account\":\t{\r\n\t\t\"email\":\"polish.teacherCHANGED@mail.com\"\r\n\t},\r\n\t\"description\":\"I love my country, so I love Polish language.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/teachers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET teacher 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/teachers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1276,6 +1378,74 @@
 						"description": "List of parameters created according to USE CASE"
 					},
 					"response": []
+				},
+				{
+					"name": "GET students by student",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password6",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "User6",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/students/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"students",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET student 3",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "User6",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password6",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/students/-3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"-3"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1316,6 +1486,74 @@
 								{
 									"key": "username",
 									"value": "User2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/courses/-1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET my course",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password2",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "User2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/courses/-1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET not mine course",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password4",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "User4",
 									"type": "string"
 								}
 							]
@@ -1502,7 +1740,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "27b358c1-dee3-4d84-bbcf-aa23a866b190",
+				"id": "386fada4-828d-4719-9614-adadab47f0a9",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1512,7 +1750,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "57bb59f7-a449-48b1-8069-af397aa269c6",
+				"id": "3339294c-5564-4a1f-a248-873a96ec6949",
 				"type": "text/javascript",
 				"exec": [
 					""
