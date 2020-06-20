@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "13f0d92c-43c9-4c7f-b5d0-ea3379081d81",
-		"name": "Teached",
+		"_postman_id": "ee2c328d-afe7-40cd-bda2-db70d3298fde",
+		"name": "Teached all requests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -455,6 +455,82 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "POST subject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Polish\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT subject",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Polish-2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/subjects/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subjects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH subject",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Polish-1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/subjects/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subjects",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -521,6 +597,61 @@
 									"key": "paymentStatus",
 									"value": "WAITING_FOR_PAYMENT"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"sender\":\"/api/students/-1\",\r\n\t\"recipient\":\"/api/teachers/-3\",\r\n\t\"amount\": 60.0,\r\n\t\"status\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH payment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/payments/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"payments",
+								"1"
 							]
 						}
 					},
@@ -1265,6 +1396,91 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Get accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/accounts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/accounts/-1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"-1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Administrator",
+			"item": [
+				{
+					"name": "Get administartors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/administrators",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"administrators"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get administrator by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/administrators",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"administrators"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -1272,12 +1488,12 @@
 		"basic": [
 			{
 				"key": "password",
-				"value": "password2",
+				"value": "password1",
 				"type": "string"
 			},
 			{
 				"key": "username",
-				"value": "User2",
+				"value": "User1",
 				"type": "string"
 			}
 		]
@@ -1286,7 +1502,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "a2fbf8db-b925-4afc-924a-885bc99c5ee8",
+				"id": "27b358c1-dee3-4d84-bbcf-aa23a866b190",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1296,7 +1512,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "403f477b-19e4-4a12-9ea3-7dba3e902dda",
+				"id": "57bb59f7-a449-48b1-8069-af397aa269c6",
 				"type": "text/javascript",
 				"exec": [
 					""
