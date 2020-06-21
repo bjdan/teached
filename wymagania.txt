@@ -1,0 +1,16 @@
+Aspirujemy na ocenę 4.5. 
+Wszystkie poniższe wymagania na ocenę 4 zostały spełnione:
+1.	Wykorzystanie narzędzia Spring Framework (najlepiej z wykorzstaniem SpringBoot) + Maven + git
+2.	Kod ma być dostępny w zewnętrznym repozytorium razem z dokumentacją
+3.	min. 10 poprawnych (zgodnych z REST) endpointów (min 4 metody GET/POST/PUT/DELETE) Należy znać sens wykorzystywanych metod.
+4.	Do wszystkich endpointów należy przygotować kolekcję requestów za pomocą programu Postman (wyeksportowana kolekcja ma znaleźć się w repozytorium razem z kodem oraz dokumentacją w oddzielnych katalogach)
+5.	min 5 tabel (z więzami zależności) w bazie wykorzystywanej przez aplikację
+6.	Logika biznesowa wykorzystująca DI oraz IoC
+7.	Dokumentacja opisująca przeznaczenie oraz przypadki użycia aplikacji w postaci diagramów UML
+
+Dodatkowo:
+*W kolekcji requestów, oprócz requestów do poszczególnych repozytoriów (odpowiednio nazwane katalogi), znajduje się także katalog EndToEnd zawierający kilkanaście requestów, które pokazują przykładowe użycie funkcjonalności naszego systemu.
+*Zastosowaliśmy hateoas
+*Dodaliśmy uwierzytelnianie i autoryzację (klasa Security)
+*Stworzylismy kilka przykładowych widoków, wykorzystując Thymeleaf i Bootstrap
+
