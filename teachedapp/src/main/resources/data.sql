@@ -23,8 +23,7 @@ INSERT INTO  teacher (teacher_id, description)
 VALUES (-1, 'Can I help you?'),
 (-2, 'I have 25 years of experience.'),
 (-4, 'I have 20 years of experience.'),
-(-5, 'I love biology.'),
-(-6, 'I love math.');
+(-5, 'I love biology.');
 
 INSERT INTO teacher_subject_assignment(teacher_id, subject_id)
 VALUES (-2, -7),
@@ -33,7 +32,8 @@ VALUES (-2, -7),
 (-4, -1);
 
 INSERT INTO  student (student_id, budget)
-VALUES (-3, 100.50);
+VALUES (-3, 100.50),
+(-6, 1000.0);
 
 INSERT INTO course (course_id, subject_id, status, hours_per_week, lessons_schedule, student_price_per_hour, teacher_pay_rate_per_hour, teacher_id, student_id)
 VALUES (-1, -6, 0, 3, 'pon 10-13', 29.90, 15, -2, -3),
